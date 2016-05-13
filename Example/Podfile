@@ -1,11 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
 use_frameworks!
 
-target 'ReactiveKiwi_Example' do
+target 'ReactiveKiwi_Example', :exclusive => true do
   pod 'ReactiveKiwi', :path => '../'
-
-  target 'ReactiveKiwi_Tests' do
-    inherit! :search_paths
-
-    pod 'Kiwi'
-  end
 end
+
+target 'ReactiveKiwi_Tests' , :exclusive => true do
+  pod 'ReactiveKiwi', :path => '../'
+  pod 'Kiwi'
+end
+

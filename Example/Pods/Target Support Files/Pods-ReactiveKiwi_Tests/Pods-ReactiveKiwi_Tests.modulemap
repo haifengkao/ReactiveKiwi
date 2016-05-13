@@ -1,0 +1,6 @@
+framework module Pods_ReactiveKiwi_Tests {
+  umbrella header "Pods-ReactiveKiwi_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

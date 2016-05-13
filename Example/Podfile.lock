@@ -1,0 +1,33 @@
+PODS:
+  - Kiwi (2.4.0)
+  - ReactiveCocoa (4.1.0):
+    - ReactiveCocoa/UI (= 4.1.0)
+    - Result (~> 2.0)
+  - ReactiveCocoa/Core (4.1.0):
+    - ReactiveCocoa/no-arc
+    - Result (~> 2.0)
+  - ReactiveCocoa/no-arc (4.1.0):
+    - Result (~> 2.0)
+  - ReactiveCocoa/UI (4.1.0):
+    - ReactiveCocoa/Core
+    - Result (~> 2.0)
+  - ReactiveKiwi (0.1.0):
+    - Kiwi
+    - ReactiveCocoa
+  - Result (2.0.0)
+
+DEPENDENCIES:
+  - Kiwi
+  - ReactiveKiwi (from `../`)
+
+EXTERNAL SOURCES:
+  ReactiveKiwi:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
+  ReactiveKiwi: 56703148a13068c3a7175a895f6e335f93afa5c8
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
+
+COCOAPODS: 0.39.0

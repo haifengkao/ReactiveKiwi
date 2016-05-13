@@ -8,37 +8,35 @@
 
 // https://github.com/kiwi-bdd/Kiwi
 
+#import "ReactiveKiwi.h"
+
 SPEC_BEGIN(InitialTests)
 
 describe(@"My initial tests", ^{
 
-  context(@"will fail", ^{
+    it(@"can do maths", ^{
+        [[[RACSignal return:@(1)].kwFuture shouldEventually] equal:@(1)];
+    });
 
-      it(@"can do maths", ^{
-          [[@1 should] equal:@2];
-      });
+    it(@"can complete", ^{
+        [[[RACSignal return:@(1)].kwCompletionFuture shouldEventually] beYes];
+    });
 
-      it(@"can read", ^{
-          [[@"number" should] equal:@"string"];
-      });
-    
-      it(@"will wait and fail", ^{
-          NSObject *object = [[NSObject alloc] init];
-          [[expectFutureValue(object) shouldEventually] receive:@selector(autoContentAccessingProxy)];
-      });
-  });
+    it(@"can get error", ^{
+        NSError* error = [NSError errorWithDomain:@"ReactiveKiwi" code:0 userInfo:@{NSLocalizedDescriptionKey:@""}];
+        [[[RACSignal error:error].kwErrorFuture shouldEventually] equal:error];
+    });
 
-  context(@"will pass", ^{
-    
-      it(@"can do maths", ^{
-        [[@1 should] beLessThan:@23];
-      });
-    
-      it(@"can read", ^{
-          [[@"team" shouldNot] containString:@"I"];
-      });  
-  });
-  
+    it(@"can be released", ^{
+        KWFutureObject* future = nil;
+
+        @autoreleasepool {
+            RACSignal* signal = [RACSignal return:@(1)];
+            future = signal.kwDeallocFuture;
+        }
+
+        [[future shouldEventually] beYes];
+    });
 });
 
 SPEC_END
